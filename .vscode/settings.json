@@ -1,8 +1,8 @@
 {
   "workbench.colorCustomizations": {
-    "activityBar.background": "#8d5784",
-    "titleBar.inactiveBackground": "#8d5784",
-    "titleBar.activeBackground": "#8d5784"
+    "activityBar.background": "#d34343",
+    "titleBar.inactiveBackground": "#d34343",
+    "titleBar.activeBackground": "#d34343"
   },
   "explorer.compactFolders": false,
   "workbench.editor.limit.enabled": true,
