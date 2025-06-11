@@ -5,6 +5,7 @@ export 'src/bulletins_query_list.dart';
 export 'src/collection_rating_cache.dart';
 export 'src/collection_rating_utils.dart';
 export 'src/collection_utils.dart';
+export 'src/collections_query_list.dart';
 export 'src/conversation_query_list.dart';
 export 'src/conversation_utils.dart';
 export 'src/db_models/bulletin_model.dart';
