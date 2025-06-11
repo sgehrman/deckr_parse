@@ -1,0 +1,35 @@
+name: deckr_parse
+description: Dart package project.
+version: 0.0.1
+publish_to: 'none'
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  dfc_dart:
+    git: https://github.com/sgehrman/dfc_dart
+  dfc_flutter:
+    git: https://github.com/sgehrman/dfc_flutter
+  flutter:
+    sdk: flutter
+  http: ^1.4.0
+  image: ^4.5.4
+  json_annotation: ^4.9.0
+  parse_server_sdk_flutter:
+    git:
+      url: https://github.com/sgehrman/Parse-SDK-Flutter.git
+      path: packages/flutter
+
+dev_dependencies:
+  dart_code_metrics:
+    git: https://github.com/JonasWanke/dart-code-metrics
+  dfc_lints:
+    git: https://github.com/sgehrman/dfc_lints
+  json_serializable: ^6.9.4
+
+flutter:
+  uses-material-design: true
+
+  # for flutter_localizations
+  generate: true
