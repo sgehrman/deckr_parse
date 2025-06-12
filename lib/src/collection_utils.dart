@@ -251,6 +251,23 @@ class CollectionUtils {
     return result;
   }
 
+  static Future<SharedCollectionModel?> objectWithId(String objectId) async {
+    try {
+      final query = ParseObject(className);
+      final response = await query.getObject(objectId);
+
+      if (response.success && response.result != null) {
+        return parseObjectToModel(response.result as ParseObject);
+      } else {
+        print('objectWithId: Object not found.');
+      }
+    } catch (e) {
+      print('Error objectWithId: $e');
+    }
+
+    return null;
+  }
+
   static SharedCollectionModel? parseObjectToModel(ParseObject parseObject) {
     // full: true gets the user which we included in the query
     final map = ParseUtils.parseObjectToJson(
