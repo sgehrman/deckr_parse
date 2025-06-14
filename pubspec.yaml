@@ -20,6 +20,7 @@ dependencies:
     git:
       url: https://github.com/sgehrman/Parse-SDK-Flutter.git
       path: packages/flutter
+  web: ^1.1.1
 
 dev_dependencies:
   dart_code_metrics:

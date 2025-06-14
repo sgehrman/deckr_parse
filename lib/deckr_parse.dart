@@ -13,6 +13,7 @@ export 'src/db_models/parse_chat_conversation_model.dart';
 export 'src/db_models/parse_chat_message_model.dart';
 export 'src/db_models/parse_user_model.dart';
 export 'src/db_models/shared_collection_model.dart';
+export 'src/deckr_link_utils.dart';
 export 'src/models/bookmark_collection_backup_model.dart';
 export 'src/models/bookmark_collection_export_model.dart';
 export 'src/models/bookmark_collection_model.dart';
