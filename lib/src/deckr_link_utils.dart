@@ -12,7 +12,8 @@ class DeckrLinkUtils {
       url = '/?cmd=link&id=$id';
     }
 
-    final origin = WebUtils().locationOrigin();
+    // called from localhost in Deckr, so can't use origin
+    const origin = 'https://deckr.surf'; // WebUtils().locationOrigin();
 
     if (!withOrigin) {
       return url;
