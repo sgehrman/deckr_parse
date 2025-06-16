@@ -1,8 +1,8 @@
-import 'package:web/web.dart' as web;
+import 'package:dfc_flutter/dfc_flutter_web.dart';
 
 class DeckrLinkUtils {
   static void updateAddressBar(String id) {
-    web.window.history.pushState(null, '', linkUrl(id, withOrigin: false));
+    WebUtils().historyPushState(linkUrl(id, withOrigin: false));
   }
 
   static String linkUrl(String id, {bool withOrigin = true}) {
@@ -12,7 +12,7 @@ class DeckrLinkUtils {
       url = '/?cmd=link&id=$id';
     }
 
-    final origin = web.window.location.origin;
+    final origin = WebUtils().locationOrigin();
 
     if (!withOrigin) {
       return url;
