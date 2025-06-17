@@ -7,11 +7,13 @@ class CollectionsQueryList extends StatefulWidget {
     required this.itemBuilder,
     this.keyword = '',
     this.searchQuery = '',
+    this.separator = const SizedBox(height: 16),
     super.key,
   });
 
   final String keyword;
   final String searchQuery;
+  final Widget separator;
   final Widget Function(SharedCollectionModel model, int index) itemBuilder;
 
   @override
@@ -116,7 +118,7 @@ class _CollectionsQueryListState extends State<CollectionsQueryList> {
     return ListView.separated(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       controller: _scrollController,
-      separatorBuilder: (context, index) => const SizedBox(height: 16),
+      separatorBuilder: (context, index) => widget.separator,
       itemCount: items.length,
       itemBuilder: (context, index) {
         final model = items[index];
