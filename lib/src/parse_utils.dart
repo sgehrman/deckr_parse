@@ -169,8 +169,6 @@ class ParseUtils {
       final response = await parseFile.save();
 
       if (response.success) {
-        // print(response.result);
-
         return parseFile;
       } else {
         print('save image failed: ${response.error}');

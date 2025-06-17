@@ -24,8 +24,6 @@ class UserUtils {
 
       final response = await user.update();
       if (response.success) {
-        print('License key saved on server');
-
         await ParseUserProvider().sync();
       } else {
         print('Error while updating License key: ${response.error}');
@@ -48,8 +46,6 @@ class UserUtils {
 
       final response = await user.update();
       if (response.success) {
-        print('blueCheck saved on server');
-
         await ParseUserProvider().sync();
       } else {
         print('Error while updating blueCheck: ${response.error}');
