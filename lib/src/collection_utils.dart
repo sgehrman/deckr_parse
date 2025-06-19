@@ -28,7 +28,7 @@ class CollectionUtils {
   static Future<Map<String, dynamic>> uploadCollection({
     required SharedCollectionModel collection,
     required List<IndexedBookmarkModel> bookmarks,
-    required Uri Function(IndexedBookmarkModel) imageUri,
+    required Uri? Function(IndexedBookmarkModel) imageUri,
   }) async {
     final bookmarkMaps = bookmarks.map((e) => json.encode(e)).toList();
 

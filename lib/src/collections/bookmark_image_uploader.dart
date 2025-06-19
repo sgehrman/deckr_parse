@@ -6,17 +6,19 @@ import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 class BookmarkImageUploader {
   static Future<Map<String, ParseFileBase>> uploaBookmarkImages({
     required List<IndexedBookmarkModel> bookmarks,
-    required Uri Function(IndexedBookmarkModel) imageUri,
+    required Uri? Function(IndexedBookmarkModel) imageUri,
   }) async {
     final images = <String, ParseFileBase>{};
 
     for (final bookmark in bookmarks) {
       final uri = imageUri(bookmark);
 
-      final parseFile = await _upload(uri);
+      if (uri != null) {
+        final parseFile = await _upload(uri);
 
-      if (parseFile != null) {
-        images[bookmark.bookmark.key] = parseFile;
+        if (parseFile != null) {
+          images[bookmark.bookmark.key] = parseFile;
+        }
       }
     }
 
