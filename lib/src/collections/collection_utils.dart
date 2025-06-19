@@ -102,10 +102,11 @@ class CollectionUtils {
     }
   }
 
-  static Future<List<IndexedBookmarkModel>> bookmarksForCollection(
+  static Future<BookmarksAndImages> bookmarksForCollection(
     ParseObject collection,
   ) async {
     final results = <IndexedBookmarkModel>[];
+    Map<String, ParseFileBase>? images;
 
     final bookmarksPointer = collection.get<ParseObject>(
       kBookmarkListPointerField,
@@ -131,6 +132,9 @@ class CollectionUtils {
 
               results.add(IndexedBookmarkModel.fromJson(bookmarkMap));
             }
+
+            // get the images
+            images = bookmarkList.get<Map<String, ParseFileBase>>(kImagesField);
           }
         }
       }
@@ -138,7 +142,7 @@ class CollectionUtils {
       print("FAILED: getBookmarks - collection.get<ParseObject>('bookmarks')");
     }
 
-    return results;
+    return BookmarksAndImages(bookmarks: results, images: images ?? {});
   }
 
   static Future<ParseObject> parseObjectForModel(SharedCollectionModel model) {
@@ -321,5 +325,22 @@ class CollectionUtils {
     }
 
     return 0;
+  }
+}
+
+// =====================================================
+
+class BookmarksAndImages {
+  BookmarksAndImages({required this.bookmarks, required this.images});
+  final List<IndexedBookmarkModel> bookmarks;
+  final Map<String, ParseFileBase> images;
+
+  String? imageUrlForBookmark(IndexedBookmarkModel bookmark) {
+    final parseFile = images[bookmark.bookmark.key];
+    if (parseFile != null) {
+      return parseFile.url;
+    }
+
+    return null;
   }
 }
