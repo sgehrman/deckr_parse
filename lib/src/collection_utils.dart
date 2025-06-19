@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:deckr_parse/src/db_models/shared_collection_model.dart';
 import 'package:deckr_parse/src/models/indexed_bookmark_model.dart';
@@ -9,33 +10,34 @@ import 'package:dfc_flutter/dfc_flutter_web.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class CollectionUtils {
-  static const String className = 'Collection';
-  static const String bookmarkListPointerField = 'bookmarks';
-  static const String userPointerField = 'user';
-  static const String bookmarkListClassName = 'BookmarkList';
-  static const String jsonArrayField = 'bookmarks';
-  static const String nameField = 'name';
-  static const String descriptionField = 'description';
+  static const String kClassName = 'Collection';
+  static const String kBookmarkListPointerField = 'bookmarks';
+  static const String kUserPointerField = 'user';
+  static const String kBookmarkListClassName = 'BookmarkList';
+  static const String kJsonArrayField = 'bookmarks';
+  static const String kNameField = 'name';
+  static const String kDescriptionField = 'description';
 
-  static const latestCollectionId = 'latest';
-  static const mySharesCollectionId = 'my-shares';
+  static const kLatestCollectionId = 'latest';
+  static const kMySharesCollectionId = 'my-shares';
 
   static bool isSearchableKeyword(String keyword) {
-    return keyword != latestCollectionId && keyword != mySharesCollectionId;
+    return keyword != kLatestCollectionId && keyword != kMySharesCollectionId;
   }
 
   static Future<Map<String, dynamic>> uploadCollection(
     SharedCollectionModel collection,
     List<IndexedBookmarkModel> bookmarks,
+    Map<String, Uint8List> bookmarkImages,
   ) async {
     final bookmarkMaps = bookmarks.map((e) => json.encode(e)).toList();
 
-    final bookmarksObject = ParseObject(bookmarkListClassName);
-    bookmarksObject.set(jsonArrayField, bookmarkMaps);
+    final bookmarksObject = ParseObject(kBookmarkListClassName);
+    bookmarksObject.set(kJsonArrayField, bookmarkMaps);
 
     final listResponse = await bookmarksObject.save();
     if (listResponse.success) {
-      final parseObject = ParseObject(className);
+      final parseObject = ParseObject(kClassName);
 
       final collectionMap = collection.toJson();
 
@@ -46,8 +48,8 @@ class CollectionUtils {
         }
       }
 
-      parseObject.set(bookmarkListPointerField, bookmarksObject);
-      parseObject.set(userPointerField, ParseUserProvider().user);
+      parseObject.set(kBookmarkListPointerField, bookmarksObject);
+      parseObject.set(kUserPointerField, ParseUserProvider().user);
 
       final response = await parseObject.save();
 
@@ -74,13 +76,13 @@ class CollectionUtils {
   static Future<void> deleteCollection(ParseObject collection) async {
     // get objectId for bookmarks list
     final bookmarksPointer = collection.get<ParseObject>(
-      bookmarkListPointerField,
+      kBookmarkListPointerField,
     );
     if (bookmarksPointer != null) {
       final objectId = bookmarksPointer.objectId;
 
       if (objectId != null) {
-        final bookmarkList = ParseObject(bookmarkListClassName)
+        final bookmarkList = ParseObject(kBookmarkListClassName)
           ..objectId = objectId;
 
         await bookmarkList.delete();
@@ -97,7 +99,7 @@ class CollectionUtils {
     final results = <IndexedBookmarkModel>[];
 
     final bookmarksPointer = collection.get<ParseObject>(
-      bookmarkListPointerField,
+      kBookmarkListPointerField,
     );
     if (bookmarksPointer != null) {
       final objectId = bookmarksPointer.objectId;
@@ -110,7 +112,7 @@ class CollectionUtils {
 
           if (bookmarkList != null) {
             final jsonArray = List<String>.from(
-              bookmarkList.get(jsonArrayField) as List? ?? [],
+              bookmarkList.get(kJsonArrayField) as List? ?? [],
             );
 
             for (final jsonStr in jsonArray) {
@@ -132,7 +134,7 @@ class CollectionUtils {
 
   static Future<ParseObject> parseObjectForModel(SharedCollectionModel model) {
     return ParseUtils.parseObjectForId(
-      className: className,
+      className: kClassName,
       objectId: model.objectId,
     );
   }
@@ -142,26 +144,31 @@ class CollectionUtils {
   }) {
     // ---------------------------
     // search on bookmarks list
-    final bookmarkListQuery = QueryBuilder<ParseObject>(ParseObject(className));
+    final bookmarkListQuery = QueryBuilder<ParseObject>(
+      ParseObject(kClassName),
+    );
 
     final pointerQuery = QueryBuilder<ParseObject>(
-      ParseObject(bookmarkListClassName),
+      ParseObject(kBookmarkListClassName),
     );
-    pointerQuery.whereContains(jsonArrayField, searchText);
+    pointerQuery.whereContains(kJsonArrayField, searchText);
 
-    bookmarkListQuery.whereMatchesQuery(bookmarkListPointerField, pointerQuery);
+    bookmarkListQuery.whereMatchesQuery(
+      kBookmarkListPointerField,
+      pointerQuery,
+    );
 
     // ---------------------------
     // search on description
-    final descriptionQuery = QueryBuilder<ParseObject>(ParseObject(className));
-    descriptionQuery.whereContains(descriptionField, searchText);
+    final descriptionQuery = QueryBuilder<ParseObject>(ParseObject(kClassName));
+    descriptionQuery.whereContains(kDescriptionField, searchText);
 
     // ---------------------------
     // search on name
-    final nameQuery = QueryBuilder<ParseObject>(ParseObject(className));
-    nameQuery.whereContains(nameField, searchText);
+    final nameQuery = QueryBuilder<ParseObject>(ParseObject(kClassName));
+    nameQuery.whereContains(kNameField, searchText);
 
-    return QueryBuilder.or(ParseObject(className), [
+    return QueryBuilder.or(ParseObject(kClassName), [
       bookmarkListQuery,
       nameQuery,
       descriptionQuery,
@@ -174,14 +181,14 @@ class CollectionUtils {
     required int page,
     required int limit,
   }) {
-    var resultBuilder = QueryBuilder<ParseObject>(ParseObject(className));
+    var resultBuilder = QueryBuilder<ParseObject>(ParseObject(kClassName));
 
     if (searchText.length > 2) {
       resultBuilder = _buildSearchQuery(searchText: searchText);
-    } else if (keyword == mySharesCollectionId) {
+    } else if (keyword == kMySharesCollectionId) {
       final user = ParseUserProvider().user;
       if (user != null) {
-        resultBuilder.whereEqualTo(userPointerField, user);
+        resultBuilder.whereEqualTo(kUserPointerField, user);
       }
     } else if (keyword.isNotEmpty && isSearchableKeyword(keyword)) {
       resultBuilder.whereArrayContainsAll('keywords', [keyword]);
@@ -195,7 +202,7 @@ class CollectionUtils {
     }
 
     // this fetches the user record
-    resultBuilder.includeObject([userPointerField]);
+    resultBuilder.includeObject([kUserPointerField]);
 
     return resultBuilder;
   }
@@ -253,7 +260,7 @@ class CollectionUtils {
 
   static Future<SharedCollectionModel?> objectWithId(String objectId) async {
     try {
-      final query = ParseObject(className);
+      final query = ParseObject(kClassName);
       final response = await query.getObject(objectId);
 
       if (response.success && response.result != null) {
@@ -292,7 +299,7 @@ class CollectionUtils {
 
   static Future<int> collectionCount({required String keyword}) async {
     if (keyword.isNotEmpty && isSearchableKeyword(keyword)) {
-      final resultBuilder = QueryBuilder<ParseObject>(ParseObject(className));
+      final resultBuilder = QueryBuilder<ParseObject>(ParseObject(kClassName));
 
       resultBuilder.whereArrayContainsAll('keywords', [keyword]);
       final response = await resultBuilder.count();
