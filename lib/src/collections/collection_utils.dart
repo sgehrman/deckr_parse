@@ -335,12 +335,12 @@ class BookmarksAndImages {
   final List<IndexedBookmarkModel> bookmarks;
   final Map<String, ParseFileBase> images;
 
-  String? imageUrlForBookmark(IndexedBookmarkModel bookmark) {
+  String imageUrlForBookmark(IndexedBookmarkModel bookmark) {
     final parseFile = images[bookmark.bookmark.key];
     if (parseFile != null) {
-      return parseFile.url;
+      return parseFile.url ?? '';
     }
 
-    return null;
+    return '';
   }
 }
