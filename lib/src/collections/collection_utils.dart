@@ -134,7 +134,11 @@ class CollectionUtils {
             }
 
             // get the images
-            images = bookmarkList.get<Map<String, ParseFileBase>>(kImagesField);
+            final map = bookmarkList.get<Map<String, dynamic>>(kImagesField);
+
+            if (map != null) {
+              images = Map<String, ParseFileBase>.from(map);
+            }
           }
         }
       }
