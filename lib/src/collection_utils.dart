@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
+import 'package:deckr_parse/src/collections/bookmark_image_uploader.dart';
 import 'package:deckr_parse/src/db_models/shared_collection_model.dart';
 import 'package:deckr_parse/src/models/indexed_bookmark_model.dart';
 import 'package:deckr_parse/src/parse_live_query.dart';
@@ -25,11 +25,11 @@ class CollectionUtils {
     return keyword != kLatestCollectionId && keyword != kMySharesCollectionId;
   }
 
-  static Future<Map<String, dynamic>> uploadCollection(
-    SharedCollectionModel collection,
-    List<IndexedBookmarkModel> bookmarks,
-    Map<String, Uint8List> bookmarkImages,
-  ) async {
+  static Future<Map<String, dynamic>> uploadCollection({
+    required SharedCollectionModel collection,
+    required List<IndexedBookmarkModel> bookmarks,
+    required Uri Function(IndexedBookmarkModel) imageUri,
+  }) async {
     final bookmarkMaps = bookmarks.map((e) => json.encode(e)).toList();
 
     final bookmarksObject = ParseObject(kBookmarkListClassName);
@@ -47,6 +47,13 @@ class CollectionUtils {
           parseObject.set(entry.key, entry.value);
         }
       }
+
+      final images = BookmarkImageUploader.uploaBookmarkImages(
+        bookmarks: bookmarks,
+        imageUri: imageUri,
+      );
+
+      print(images);
 
       parseObject.set(kBookmarkListPointerField, bookmarksObject);
       parseObject.set(kUserPointerField, ParseUserProvider().user);

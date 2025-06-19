@@ -55,16 +55,11 @@ class UserUtils {
     return false;
   }
 
-  static Future<bool> uploadUserAvatar({
-    required String avatar,
-    ParseFileBase? avatarFile,
-  }) async {
+  static Future<bool> updateUserAvatar(ParseFileBase avatarFile) async {
     final user = await ParseUtils.getUser();
 
     if (user != null) {
-      if (avatarFile != null) {
-        user.set(kAvatarField, avatarFile);
-      }
+      user.set(kAvatarField, avatarFile);
 
       final response = await user.update();
       if (response.success) {
