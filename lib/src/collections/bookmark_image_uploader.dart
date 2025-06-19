@@ -1,10 +1,9 @@
 import 'package:deckr_parse/src/models/indexed_bookmark_model.dart';
-import 'package:deckr_parse/src/parse_utils.dart';
 import 'package:dfc_flutter/dfc_flutter_web.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class BookmarkImageUploader {
-  static Future<Map<String, ParseFileBase>> uploaBookmarkImages({
+  static Future<Map<String, ParseFileBase>> uploadBookmarkImages({
     required List<IndexedBookmarkModel> bookmarks,
     required Uri? Function(IndexedBookmarkModel) imageUri,
   }) async {
@@ -32,12 +31,22 @@ class BookmarkImageUploader {
       final png = await ImageProcessor.pngFromBytes(data, maxSize: 256);
 
       if (png.bytes.isNotEmpty) {
-        return ParseUtils.uploadImageDataReturnUrl(
-          imageData: png.bytes,
-          saveAsJpg: false,
+        final parseFile = ParseWebFile(
+          png.bytes,
+          name: 'bm-${Utils.uniqueFirestoreId()}.png',
         );
+
+        final response = await parseFile.save();
+
+        if (response.success) {
+          return parseFile;
+        } else {
+          print('BookmarkImageUploader _upload failed: ${response.error}');
+        }
       }
     }
+
+    print('BookmarkImageUploader _upload failed: Image data is empty.');
 
     return null;
   }

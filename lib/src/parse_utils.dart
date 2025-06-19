@@ -149,29 +149,27 @@ class ParseUtils {
     required bool saveAsJpg,
     int maxWidth = 1024,
   }) async {
-    if (Utils.isWeb) {
-      final processedData = await processImageForUpload(
-        imageData,
-        saveAsJpg: saveAsJpg,
-        maxWidth: maxWidth,
-      );
+    final processedData = await processImageForUpload(
+      imageData,
+      saveAsJpg: saveAsJpg,
+      maxWidth: maxWidth,
+    );
 
-      var imageName = Utils.uniqueFirestoreId();
-      if (saveAsJpg) {
-        imageName = '$imageName.jpg';
-      } else {
-        imageName = '$imageName.png';
-      }
+    var imageName = Utils.uniqueFirestoreId();
+    if (saveAsJpg) {
+      imageName = '$imageName.jpg';
+    } else {
+      imageName = '$imageName.png';
+    }
 
-      final parseFile = ParseWebFile(processedData, name: imageName);
+    final parseFile = ParseWebFile(processedData, name: imageName);
 
-      final response = await parseFile.save();
+    final response = await parseFile.save();
 
-      if (response.success) {
-        return parseFile;
-      } else {
-        print('save image failed: ${response.error}');
-      }
+    if (response.success) {
+      return parseFile;
+    } else {
+      print('save image failed: ${response.error}');
     }
 
     return null;

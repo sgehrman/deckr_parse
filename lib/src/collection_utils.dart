@@ -15,6 +15,7 @@ class CollectionUtils {
   static const String kUserPointerField = 'user';
   static const String kBookmarkListClassName = 'BookmarkList';
   static const String kJsonArrayField = 'bookmarks';
+  static const String kImagesField = 'images';
   static const String kNameField = 'name';
   static const String kDescriptionField = 'description';
 
@@ -35,6 +36,14 @@ class CollectionUtils {
     final bookmarksObject = ParseObject(kBookmarkListClassName);
     bookmarksObject.set(kJsonArrayField, bookmarkMaps);
 
+    // save images in the bookmarksObject
+    final images = await BookmarkImageUploader.uploadBookmarkImages(
+      bookmarks: bookmarks,
+      imageUri: imageUri,
+    );
+
+    bookmarksObject.set(kImagesField, images);
+
     final listResponse = await bookmarksObject.save();
     if (listResponse.success) {
       final parseObject = ParseObject(kClassName);
@@ -47,13 +56,6 @@ class CollectionUtils {
           parseObject.set(entry.key, entry.value);
         }
       }
-
-      final images = BookmarkImageUploader.uploaBookmarkImages(
-        bookmarks: bookmarks,
-        imageUri: imageUri,
-      );
-
-      print(images);
 
       parseObject.set(kBookmarkListPointerField, bookmarksObject);
       parseObject.set(kUserPointerField, ParseUserProvider().user);
