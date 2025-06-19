@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:deckr_parse/src/db_models/parse_user_model.dart';
 import 'package:deckr_parse/src/parse_user_provider.dart';
 import 'package:dfc_flutter/dfc_flutter_web.dart';
 import 'package:flutter/material.dart';
@@ -238,28 +237,6 @@ class ParseUtils {
 
     if (result.isNotEmpty) {
       return result.first;
-    }
-
-    return null;
-  }
-
-  // ----------------------------------------------------
-
-  static ParseUserModel? parseObjectToModel(
-    ParseObject parseObject,
-    String avatarField,
-  ) {
-    try {
-      final map = parseObjectToJson(parseObject: parseObject);
-      if (map.isNotEmpty) {
-        // replace 'image' file with the files url
-        final file = parseObject.get<ParseFileBase>(avatarField);
-        map[avatarField] = file?.url ?? '';
-
-        return ParseUserModel.fromJson(map);
-      }
-    } catch (err) {
-      print(err);
     }
 
     return null;

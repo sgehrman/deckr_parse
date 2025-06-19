@@ -7,9 +7,9 @@ import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 class UserUtils {
   UserUtils._();
 
-  static const String avatarField = 'avatar';
-  static const String licenseKeyField = 'licenseKey';
-  static const String blueCheckField = 'blueCheck';
+  static const String kAvatarField = 'avatar';
+  static const String kLicenseKeyField = 'licenseKey';
+  static const String kBlueCheckField = 'blueCheck';
 
   static Future<bool> saveLicenseKey({required String licenseKey}) async {
     // don't update if we already have it in the User
@@ -20,7 +20,7 @@ class UserUtils {
     final user = await ParseUtils.getUser();
 
     if (user != null) {
-      user.set(licenseKeyField, licenseKey);
+      user.set(kLicenseKeyField, licenseKey);
 
       final response = await user.update();
       if (response.success) {
@@ -42,7 +42,7 @@ class UserUtils {
     final user = await ParseUtils.getUser();
 
     if (user != null) {
-      user.set(blueCheckField, blueCheck);
+      user.set(kBlueCheckField, blueCheck);
 
       final response = await user.update();
       if (response.success) {
@@ -63,7 +63,7 @@ class UserUtils {
 
     if (user != null) {
       if (avatarFile != null) {
-        user.set(avatarField, avatarFile);
+        user.set(kAvatarField, avatarFile);
       }
 
       final response = await user.update();
@@ -91,8 +91,24 @@ class UserUtils {
   }
 
   static ParseUserModel? parseObjectToModel(ParseObject parseObject) {
-    return ParseUtils.parseObjectToModel(parseObject, avatarField);
+    try {
+      final map = ParseUtils.parseObjectToJson(parseObject: parseObject);
+
+      if (map.isNotEmpty) {
+        // replace 'image' file with the files url
+        final file = parseObject.get<ParseFileBase>(kAvatarField);
+        map[kAvatarField] = file?.url ?? '';
+
+        return ParseUserModel.fromJson(map);
+      }
+    } catch (err) {
+      print(err);
+    }
+
+    return null;
   }
+
+  // ----------------------------------------------------
 }
 
 // Parse.Cloud.define("editUserProperty", async (request) => {
