@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:deckr_parse/src/collection_utils.dart';
+import 'package:deckr_parse/src/collections/collection_utils.dart';
 import 'package:deckr_parse/src/db_models/shared_collection_model.dart';
 import 'package:deckr_parse/src/parse_live_query.dart';
 
