@@ -275,18 +275,23 @@ class CollectionUtils {
     return result;
   }
 
-  static Future<SharedCollectionModel?> objectWithId(String objectId) async {
+  static Future<SharedCollectionModel?> collectionWithId(
+    String objectId,
+  ) async {
     try {
       final query = ParseObject(kClassName);
-      final response = await query.getObject(objectId);
+      final response = await query.getObject(
+        objectId,
+        include: [kUserPointerField],
+      );
 
       if (response.success && response.result != null) {
         return parseObjectToModel(response.result as ParseObject);
       } else {
-        print('objectWithId: Object not found.');
+        print('collectionWithId: Object not found.');
       }
     } catch (e) {
-      print('Error objectWithId: $e');
+      print('Error collectionWithId: $e');
     }
 
     return null;
