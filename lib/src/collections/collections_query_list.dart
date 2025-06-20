@@ -1,5 +1,5 @@
+import 'package:deckr_parse/src/collections/paged_live_query.dart';
 import 'package:deckr_parse/src/db_models/shared_collection_model.dart';
-import 'package:deckr_parse/src/paged_live_query.dart';
 import 'package:flutter/material.dart';
 
 class CollectionsQueryList extends StatefulWidget {
