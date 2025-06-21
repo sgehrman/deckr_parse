@@ -95,28 +95,7 @@ class CollectionUtils {
         final bookmarkList = ParseObject(kBookmarkListClassName)
           ..objectId = objectId;
 
-        final loaded = await bookmarkList.fetch();
-
-        // need to delete any images stored in the bookmarkList
-        final images = loaded.get<Map<String, dynamic>>(kImagesField);
-
-        print('deleteCollection, images: $images');
-
-        if (images != null) {
-          for (final entry in images.entries) {
-            final parseFile = entry.value as ParseFileBase;
-
-            print('Deleting image: ${parseFile.url}');
-
-            // delete the image file
-            final res = await parseFile.delete();
-
-            print('Image deleted: ${parseFile.url} - success: ${res.success}');
-            if (!res.success) {
-              print('Error deleting image: ${res.error}');
-            }
-          }
-        }
+        // images are deleted on the server side using the cloud code`
 
         // delete the bookmarkList
         await bookmarkList.delete();
