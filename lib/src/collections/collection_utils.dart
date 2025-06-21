@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:deckr_parse/src/collections/bookmark_image_uploader.dart';
 import 'package:deckr_parse/src/db_models/shared_collection_model.dart';
 import 'package:deckr_parse/src/models/indexed_bookmark_model.dart';
 import 'package:deckr_parse/src/parse_live_query.dart';
@@ -38,15 +37,14 @@ class CollectionUtils {
       bookmarksObject.set(kJsonArrayField, bookmarkMaps);
 
       // save images in the bookmarksObject
-      final images = await BookmarkImageUploader.uploadBookmarkImages(
-        bookmarks: bookmarks,
-        imageUri: imageUri,
-      );
+      // final images = await BookmarkImageUploader.uploadBookmarkImages(
+      //   bookmarks: bookmarks,
+      //   imageUri: imageUri,
+      // );
 
-      print('images');
+      // bookmarksObject.set(kImagesField, images);
 
-      bookmarksObject.set(kImagesField, images);
-      print('set');
+      print('before save');
 
       final listResponse = await bookmarksObject.save();
 
