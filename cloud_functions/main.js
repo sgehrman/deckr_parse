@@ -1,4 +1,6 @@
-const Parse = require('parse/node');
+// @ts-check
+
+import Parse from 'parse/node';
 
 // ------------------------------------------------------------
 // is current user part of the Admin role?
@@ -62,7 +64,7 @@ Parse.Cloud.beforeDelete('ChatMessage', async (request) => {
 
 Parse.Cloud.afterSave('ChatMessage', async (request) => {
   const imageFile = request.object.get('image');
-  const imageOriginal = request.original.get('image');
+  const imageOriginal = request.original ? request.original.get('image') : null;
 
   if (imageOriginal) {
     // if file hasn't changed, do nothing
@@ -82,6 +84,7 @@ Parse.Cloud.afterSave('ChatMessage', async (request) => {
 // ------------------------------------------------------------
 // User file delete handling
 
+// @ts-ignore eslint doesn't recognize Parse.User, see https://parseplatform.org/Parse-SDK-JS/api/v1.11.0/Parse.Cloud.html
 Parse.Cloud.beforeDelete(Parse.User, async (request) => {
   const imageFile = request.object.get('avatar');
   if (imageFile) {
@@ -94,9 +97,12 @@ Parse.Cloud.beforeDelete(Parse.User, async (request) => {
   }
 });
 
+// @ts-ignore eslint doesn't recognize Parse.User, see https://parseplatform.org/Parse-SDK-JS/api/v1.11.0/Parse.Cloud.html
 Parse.Cloud.afterSave(Parse.User, async (request) => {
   const imageFile = request.object.get('avatar');
-  const imageOriginal = request.original.get('avatar');
+  const imageOriginal = request.original
+    ? request.original.get('avatar')
+    : null;
 
   // delete original image if it exists if replacing with a new image
   if (imageOriginal) {
