@@ -34,9 +34,6 @@ class CollectionUtils {
     try {
       final bookmarkMaps = bookmarks.map((e) => json.encode(e)).toList();
 
-      print('bookmarkMaps');
-      print(bookmarkMaps);
-
       final bookmarksObject = ParseObject(kBookmarkListClassName);
       bookmarksObject.set(kJsonArrayField, bookmarkMaps);
 
@@ -47,15 +44,20 @@ class CollectionUtils {
       );
 
       print('images');
-      print(images);
 
       bookmarksObject.set(kImagesField, images);
+      print('set');
 
       final listResponse = await bookmarksObject.save();
+
+      print('save');
+
       if (listResponse.success) {
         final parseObject = ParseObject(kClassName);
+        print('toJson');
 
         final collectionMap = collection.toJson();
+        print('aaafter toJson');
 
         final validKeys = ['name', 'description', 'keywords', 'numBookmarks'];
         for (final entry in collectionMap.entries) {
