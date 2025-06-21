@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:deckr_parse/src/collections/bookmark_image_uploader.dart';
 import 'package:deckr_parse/src/db_models/shared_collection_model.dart';
 import 'package:deckr_parse/src/models/indexed_bookmark_model.dart';
 import 'package:deckr_parse/src/parse_live_query.dart';
@@ -37,25 +38,18 @@ class CollectionUtils {
       bookmarksObject.set(kJsonArrayField, bookmarkMaps);
 
       // save images in the bookmarksObject
-      // final images = await BookmarkImageUploader.uploadBookmarkImages(
-      //   bookmarks: bookmarks,
-      //   imageUri: imageUri,
-      // );
+      final images = await BookmarkImageUploader.uploadBookmarkImages(
+        bookmarks: bookmarks,
+        imageUri: imageUri,
+      );
 
-      // bookmarksObject.set(kImagesField, images);
-
-      print('before save');
+      bookmarksObject.set(kImagesField, images);
 
       final listResponse = await bookmarksObject.save();
-
-      print('save');
-
       if (listResponse.success) {
         final parseObject = ParseObject(kClassName);
-        print('toJson');
 
         final collectionMap = collection.toJson();
-        print('aaafter toJson');
 
         final validKeys = ['name', 'description', 'keywords', 'numBookmarks'];
         for (final entry in collectionMap.entries) {
@@ -64,17 +58,12 @@ class CollectionUtils {
           }
         }
 
-        print('parseObject.set');
-
         parseObject.set(kBookmarkListPointerField, bookmarksObject);
         parseObject.set(kUserPointerField, ParseUserProvider().user);
 
         final response = await parseObject.save();
 
         if (response.success) {
-          print('Collection created ${parseObject.objectId}');
-          print(response.results);
-
           if (Utils.isNotEmpty(response.results)) {
             // should only be one result
             final pobj = response.results!.first as ParseObject;
