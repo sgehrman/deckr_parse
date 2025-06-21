@@ -31,52 +31,64 @@ class CollectionUtils {
     required List<IndexedBookmarkModel> bookmarks,
     required Uri? Function(IndexedBookmarkModel) imageUri,
   }) async {
-    final bookmarkMaps = bookmarks.map((e) => json.encode(e)).toList();
+    try {
+      final bookmarkMaps = bookmarks.map((e) => json.encode(e)).toList();
 
-    final bookmarksObject = ParseObject(kBookmarkListClassName);
-    bookmarksObject.set(kJsonArrayField, bookmarkMaps);
+      print('bookmarkMaps');
+      print(bookmarkMaps);
 
-    // save images in the bookmarksObject
-    final images = await BookmarkImageUploader.uploadBookmarkImages(
-      bookmarks: bookmarks,
-      imageUri: imageUri,
-    );
+      final bookmarksObject = ParseObject(kBookmarkListClassName);
+      bookmarksObject.set(kJsonArrayField, bookmarkMaps);
 
-    bookmarksObject.set(kImagesField, images);
+      // save images in the bookmarksObject
+      final images = await BookmarkImageUploader.uploadBookmarkImages(
+        bookmarks: bookmarks,
+        imageUri: imageUri,
+      );
 
-    final listResponse = await bookmarksObject.save();
-    if (listResponse.success) {
-      final parseObject = ParseObject(kClassName);
+      print('images');
+      print(images);
 
-      final collectionMap = collection.toJson();
+      bookmarksObject.set(kImagesField, images);
 
-      final validKeys = ['name', 'description', 'keywords', 'numBookmarks'];
-      for (final entry in collectionMap.entries) {
-        if (validKeys.contains(entry.key)) {
-          parseObject.set(entry.key, entry.value);
+      final listResponse = await bookmarksObject.save();
+      if (listResponse.success) {
+        final parseObject = ParseObject(kClassName);
+
+        final collectionMap = collection.toJson();
+
+        final validKeys = ['name', 'description', 'keywords', 'numBookmarks'];
+        for (final entry in collectionMap.entries) {
+          if (validKeys.contains(entry.key)) {
+            parseObject.set(entry.key, entry.value);
+          }
         }
-      }
 
-      parseObject.set(kBookmarkListPointerField, bookmarksObject);
-      parseObject.set(kUserPointerField, ParseUserProvider().user);
+        print('parseObject.set');
 
-      final response = await parseObject.save();
+        parseObject.set(kBookmarkListPointerField, bookmarksObject);
+        parseObject.set(kUserPointerField, ParseUserProvider().user);
 
-      if (response.success) {
-        // print('Collection created ${parseObject.objectId}');
-        // print(response.results);
+        final response = await parseObject.save();
 
-        if (Utils.isNotEmpty(response.results)) {
-          // should only be one result
-          final pobj = response.results!.first as ParseObject;
+        if (response.success) {
+          print('Collection created ${parseObject.objectId}');
+          print(response.results);
 
-          return pobj.toJson();
+          if (Utils.isNotEmpty(response.results)) {
+            // should only be one result
+            final pobj = response.results!.first as ParseObject;
+
+            return pobj.toJson();
+          }
+        } else {
+          print('Error while creating Collection: ${response.success}');
         }
       } else {
-        print('Error while creating Collection: ${response.success}');
+        print('Error while creating bookmarkList: ${listResponse.success}');
       }
-    } else {
-      print('Error while creating bookmarkList: ${listResponse.success}');
+    } catch (e) {
+      print('Error: uploadCollection: $e');
     }
 
     return {};
