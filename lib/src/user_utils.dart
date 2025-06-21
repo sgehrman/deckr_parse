@@ -59,6 +59,7 @@ class UserUtils {
     final user = await ParseUtils.getUser();
 
     if (user != null) {
+      // existing avatar file is deleted by cloud code we added to back4app
       user.set(kAvatarField, avatarFile);
 
       final response = await user.update();

@@ -21,6 +21,7 @@ class ParseChatMessageUtils {
     final parseObject = ParseObject(className);
 
     if (parseFile != null) {
+      // image file is deleted when this message is delete automaticlally by cloud code we added to back4app
       parseObject.set(imageField, parseFile);
     }
 
