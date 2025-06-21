@@ -95,11 +95,10 @@ class CollectionUtils {
         final bookmarkList = ParseObject(kBookmarkListClassName)
           ..objectId = objectId;
 
+        final loaded = await bookmarkList.fetch();
+
         // need to delete any images stored in the bookmarkList
-        // using bookmarksPointer, bookmarksList isn't loaded?
-        final images = bookmarksPointer.get<Map<String, ParseFileBase>>(
-          kImagesField,
-        );
+        final images = loaded.get<Map<String, ParseFileBase>>(kImagesField);
 
         print('deleteCollection, images: $images');
 
