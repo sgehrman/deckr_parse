@@ -94,6 +94,16 @@ class CollectionUtils {
         final bookmarkList = ParseObject(kBookmarkListClassName)
           ..objectId = objectId;
 
+        // need to delete any images stored in the bookmarkList
+        final images = bookmarkList.get<Map<String, dynamic>>(kImagesField);
+        if (images != null) {
+          for (final entry in images.entries) {
+            final parseFile = entry.value as ParseFileBase;
+            await parseFile.delete();
+          }
+        }
+
+        // delete the bookmarkList
         await bookmarkList.delete();
 
         // only delete the collection if bookmarkList was successful
