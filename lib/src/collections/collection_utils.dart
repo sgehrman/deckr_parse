@@ -43,7 +43,7 @@ class CollectionUtils {
         imageUri: imageUri,
       );
 
-      bookmarksObject.set(kImagesField, images);
+      bookmarksObject.set<Map<String, ParseFileBase>>(kImagesField, images);
 
       final listResponse = await bookmarksObject.save();
       if (listResponse.success) {
