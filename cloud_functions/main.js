@@ -51,6 +51,9 @@ Parse.Cloud.define('usernameForEmail', async (request) => {
 // ChatMessage file delete handling
 
 Parse.Cloud.beforeDelete('ChatMessage', async (request) => {
+  /**
+   * @type {Parse.File | null}
+   */
   const imageFile = request.object.get('image');
   if (imageFile) {
     try {
@@ -63,7 +66,13 @@ Parse.Cloud.beforeDelete('ChatMessage', async (request) => {
 });
 
 Parse.Cloud.afterSave('ChatMessage', async (request) => {
+  /**
+   * @type {Parse.File | null}
+   */
   const imageFile = request.object.get('image');
+  /**
+   * @type {Parse.File | null}
+   */
   const imageOriginal = request.original ? request.original.get('image') : null;
 
   if (imageOriginal) {
@@ -86,6 +95,9 @@ Parse.Cloud.afterSave('ChatMessage', async (request) => {
 
 // @ts-ignore eslint doesn't recognize Parse.User, see https://parseplatform.org/Parse-SDK-JS/api/v1.11.0/Parse.Cloud.html
 Parse.Cloud.beforeDelete(Parse.User, async (request) => {
+  /**
+   * @type {Parse.File | null}
+   */
   const imageFile = request.object.get('avatar');
   if (imageFile) {
     try {
@@ -99,7 +111,13 @@ Parse.Cloud.beforeDelete(Parse.User, async (request) => {
 
 // @ts-ignore eslint doesn't recognize Parse.User, see https://parseplatform.org/Parse-SDK-JS/api/v1.11.0/Parse.Cloud.html
 Parse.Cloud.afterSave(Parse.User, async (request) => {
+  /**
+   * @type {Parse.File | null}
+   */
   const imageFile = request.object.get('avatar');
+  /**
+   * @type {Parse.File | null}
+   */
   const imageOriginal = request.original
     ? request.original.get('avatar')
     : null;
