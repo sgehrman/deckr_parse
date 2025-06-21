@@ -99,7 +99,16 @@ class CollectionUtils {
         if (images != null) {
           for (final entry in images.entries) {
             final parseFile = entry.value as ParseFileBase;
-            await parseFile.delete();
+
+            print('Deleting image: ${parseFile.url}');
+
+            // delete the image file
+            final res = await parseFile.delete();
+
+            print('Image deleted: ${parseFile.url} - success: ${res.success}');
+            if (!res.success) {
+              print('Error deleting image: ${res.error}');
+            }
           }
         }
 
