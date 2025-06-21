@@ -98,13 +98,13 @@ class CollectionUtils {
         final loaded = await bookmarkList.fetch();
 
         // need to delete any images stored in the bookmarkList
-        final images = loaded.get<Map<String, ParseFileBase>>(kImagesField);
+        final images = loaded.get<Map<String, dynamic>>(kImagesField);
 
         print('deleteCollection, images: $images');
 
         if (images != null) {
           for (final entry in images.entries) {
-            final parseFile = entry.value;
+            final parseFile = entry.value as ParseFileBase;
 
             print('Deleting image: ${parseFile.url}');
 
