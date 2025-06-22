@@ -137,3 +137,31 @@ Parse.Cloud.afterSave(Parse.User, async (request) => {
     }
   }
 });
+
+// ------------------------------------------------------------
+// BookmarksList image delete handling
+
+Parse.Cloud.beforeDelete('BookmarkList', async (request) => {
+  /**
+   * @type {Parse.Object | null}
+   */
+  const imagesMap = request.object.get('images');
+
+  if (imagesMap) {
+    for (const key in imagesMap) {
+      /**
+       * @type {Parse.File | null}
+       */
+      const imageFile = imagesMap[key];
+
+      if (imageFile) {
+        try {
+          await imageFile.destroy({ useMasterKey: true });
+        } catch (error) {
+          console.log(error);
+          throw new Error('Error deleting BookmarkList image file');
+        }
+      }
+    }
+  }
+});
