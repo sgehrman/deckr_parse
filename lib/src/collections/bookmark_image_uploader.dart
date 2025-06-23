@@ -25,25 +25,29 @@ class BookmarkImageUploader {
   }
 
   static Future<ParseFileBase?> _upload(Uri imageUri) async {
-    final data = await HttpUtils.httpGetStream(imageUri);
+    try {
+      final data = await HttpUtils.httpGetStream(imageUri);
 
-    if (data.isNotEmpty) {
-      final png = await ImageProcessor.pngFromBytes(data, maxSize: 256);
+      if (data.isNotEmpty) {
+        final png = await ImageProcessor.pngFromBytes(data, maxSize: 256);
 
-      if (png.bytes.isNotEmpty) {
-        final parseFile = ParseWebFile(
-          png.bytes,
-          name: 'bm-${Utils.uniqueFirestoreId()}.png',
-        );
+        if (png.bytes.isNotEmpty) {
+          final parseFile = ParseWebFile(
+            png.bytes,
+            name: 'bm-${Utils.uniqueFirestoreId()}.png',
+          );
 
-        final response = await parseFile.save();
+          final response = await parseFile.save();
 
-        if (response.success) {
-          return parseFile;
-        } else {
-          print('BookmarkImageUploader _upload failed: ${response.error}');
+          if (response.success) {
+            return parseFile;
+          } else {
+            print('BookmarkImageUploader _upload failed: ${response.error}');
+          }
         }
       }
+    } catch (err) {
+      print('BookmarkImageUploader _upload catch: $err');
     }
 
     print('BookmarkImageUploader _upload failed: Image data is empty.');
