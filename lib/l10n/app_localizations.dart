@@ -118,11 +118,53 @@ abstract class AppLocalizations {
   /// **'Best Reddit channels and posts'**
   String get bestRedditChannelsAndPosts;
 
+  /// No description provided for @blogs.
+  ///
+  /// In en, this message translates to:
+  /// **'Blogs'**
+  String get blogs;
+
+  /// No description provided for @celebrities.
+  ///
+  /// In en, this message translates to:
+  /// **'Celebrities'**
+  String get celebrities;
+
   /// No description provided for @coding.
   ///
   /// In en, this message translates to:
   /// **'Coding'**
   String get coding;
+
+  /// No description provided for @conservativePropaganda.
+  ///
+  /// In en, this message translates to:
+  /// **'Conservative propaganda'**
+  String get conservativePropaganda;
+
+  /// No description provided for @conspiracy.
+  ///
+  /// In en, this message translates to:
+  /// **'Conspiracy'**
+  String get conspiracy;
+
+  /// No description provided for @conspiracyTheoriesAndEvidence.
+  ///
+  /// In en, this message translates to:
+  /// **'Conspiracy theories and evidence'**
+  String get conspiracyTheoriesAndEvidence;
+
+  /// No description provided for @coolBloggersWithInterestingIdeas.
+  ///
+  /// In en, this message translates to:
+  /// **'Cool bloggers with interesting ideas'**
+  String get coolBloggersWithInterestingIdeas;
+
+  /// No description provided for @coolProductsAffiliateLinksObscureFinds.
+  ///
+  /// In en, this message translates to:
+  /// **'Cool products, affiliate links, obscure finds'**
+  String get coolProductsAffiliateLinksObscureFinds;
 
   /// No description provided for @coolVideos.
   ///
@@ -142,11 +184,29 @@ abstract class AppLocalizations {
   /// **'Documentary bookmarks and resources'**
   String get documentaryBookmarksAndResources;
 
+  /// No description provided for @drugs.
+  ///
+  /// In en, this message translates to:
+  /// **'Drugs'**
+  String get drugs;
+
   /// No description provided for @educational.
   ///
   /// In en, this message translates to:
   /// **'Educational'**
   String get educational;
+
+  /// No description provided for @entertainment.
+  ///
+  /// In en, this message translates to:
+  /// **'Entertainment'**
+  String get entertainment;
+
+  /// No description provided for @famousPeopleDoingCoolStuff.
+  ///
+  /// In en, this message translates to:
+  /// **'Famous people doing cool stuff'**
+  String get famousPeopleDoingCoolStuff;
 
   /// No description provided for @featureLengthMoviesAndShortFilms.
   ///
@@ -154,11 +214,53 @@ abstract class AppLocalizations {
   /// **'Feature length movies and short films'**
   String get featureLengthMoviesAndShortFilms;
 
+  /// No description provided for @footballBaseballBoxingMmaSkateboarding.
+  ///
+  /// In en, this message translates to:
+  /// **'Football, baseball, boxing, MMA, skateboarding'**
+  String get footballBaseballBoxingMmaSkateboarding;
+
+  /// No description provided for @gore.
+  ///
+  /// In en, this message translates to:
+  /// **'Gore'**
+  String get gore;
+
+  /// No description provided for @graphicContentViolenceAndDisturbingImagery.
+  ///
+  /// In en, this message translates to:
+  /// **'Graphic content, violence, and disturbing imagery'**
+  String get graphicContentViolenceAndDisturbingImagery;
+
   /// No description provided for @groovyPsychedelicGoodness.
   ///
   /// In en, this message translates to:
   /// **'Groovy psychedelic goodness'**
   String get groovyPsychedelicGoodness;
+
+  /// No description provided for @historicalEventsFiguresAndAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Historical events, figures, and analysis'**
+  String get historicalEventsFiguresAndAnalysis;
+
+  /// No description provided for @history.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get history;
+
+  /// No description provided for @hobbies.
+  ///
+  /// In en, this message translates to:
+  /// **'Hobbies'**
+  String get hobbies;
+
+  /// No description provided for @hobbiesAndLeisureActivities.
+  ///
+  /// In en, this message translates to:
+  /// **'Hobbies and leisure activities'**
+  String get hobbiesAndLeisureActivities;
 
   /// No description provided for @howTo.
   ///
@@ -172,11 +274,29 @@ abstract class AppLocalizations {
   /// **'Humor'**
   String get humor;
 
+  /// No description provided for @informationForSafeUsageAndEducationAboutDrugs.
+  ///
+  /// In en, this message translates to:
+  /// **'Information for safe usage and education about drugs'**
+  String get informationForSafeUsageAndEducationAboutDrugs;
+
   /// No description provided for @instructionsHowToBookmarks.
   ///
   /// In en, this message translates to:
   /// **'Instructions, how-to bookmarks'**
   String get instructionsHowToBookmarks;
+
+  /// No description provided for @interesting.
+  ///
+  /// In en, this message translates to:
+  /// **'Interesting'**
+  String get interesting;
+
+  /// No description provided for @interestingAndFascinatingFacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Interesting and fascinating facts'**
+  String get interestingAndFascinatingFacts;
 
   /// No description provided for @learningResourcesCollegeCoursesTutoring.
   ///
@@ -184,17 +304,89 @@ abstract class AppLocalizations {
   /// **'Learning resources, college courses, tutoring'**
   String get learningResourcesCollegeCoursesTutoring;
 
+  /// No description provided for @leftWingNews.
+  ///
+  /// In en, this message translates to:
+  /// **'Left Wing News'**
+  String get leftWingNews;
+
+  /// No description provided for @leftWingPropaganda.
+  ///
+  /// In en, this message translates to:
+  /// **'Left wing propaganda'**
+  String get leftWingPropaganda;
+
+  /// No description provided for @literaryWorksPoetryAndEssays.
+  ///
+  /// In en, this message translates to:
+  /// **'Literary works, poetry, and essays'**
+  String get literaryWorksPoetryAndEssays;
+
+  /// No description provided for @literature.
+  ///
+  /// In en, this message translates to:
+  /// **'Literature'**
+  String get literature;
+
   /// No description provided for @memesComedyShowsSillyGoofyWebsites.
   ///
   /// In en, this message translates to:
   /// **'Memes, comedy shows, silly/goofy websites'**
   String get memesComedyShowsSillyGoofyWebsites;
 
+  /// No description provided for @miscellaneousNews.
+  ///
+  /// In en, this message translates to:
+  /// **'Miscellaneous news'**
+  String get miscellaneousNews;
+
   /// No description provided for @movies.
   ///
   /// In en, this message translates to:
   /// **'Movies'**
   String get movies;
+
+  /// No description provided for @moviesTvShowsMusicAndMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Movies, TV shows, music, and more'**
+  String get moviesTvShowsMusicAndMore;
+
+  /// No description provided for @music.
+  ///
+  /// In en, this message translates to:
+  /// **'Music'**
+  String get music;
+
+  /// No description provided for @musicCollectionsPlaylistsAndArtists.
+  ///
+  /// In en, this message translates to:
+  /// **'Music collections, playlists, and artists'**
+  String get musicCollectionsPlaylistsAndArtists;
+
+  /// No description provided for @news.
+  ///
+  /// In en, this message translates to:
+  /// **'News'**
+  String get news;
+
+  /// No description provided for @notSafeForWork.
+  ///
+  /// In en, this message translates to:
+  /// **'Not Safe For Work'**
+  String get notSafeForWork;
+
+  /// No description provided for @nsfw.
+  ///
+  /// In en, this message translates to:
+  /// **'NSFW'**
+  String get nsfw;
+
+  /// No description provided for @occultNewAgeChristianitySpiritualBookmarks.
+  ///
+  /// In en, this message translates to:
+  /// **'Occult, New Age, Christianity, spiritual bookmarks'**
+  String get occultNewAgeChristianitySpiritualBookmarks;
 
   /// No description provided for @paranormal.
   ///
@@ -226,11 +418,41 @@ abstract class AppLocalizations {
   /// **'Programming tutorials and resources'**
   String get programmingTutorialsAndResources;
 
+  /// No description provided for @religion.
+  ///
+  /// In en, this message translates to:
+  /// **'Religion'**
+  String get religion;
+
+  /// No description provided for @rightWingNews.
+  ///
+  /// In en, this message translates to:
+  /// **'Right Wing News'**
+  String get rightWingNews;
+
   /// No description provided for @sciTech.
   ///
   /// In en, this message translates to:
   /// **'Sci/Tech'**
   String get sciTech;
+
+  /// No description provided for @shopping.
+  ///
+  /// In en, this message translates to:
+  /// **'Shopping'**
+  String get shopping;
+
+  /// No description provided for @softwareDevelopment.
+  ///
+  /// In en, this message translates to:
+  /// **'Software Development'**
+  String get softwareDevelopment;
+
+  /// No description provided for @softwareDevelopmentTutorialsAndResources.
+  ///
+  /// In en, this message translates to:
+  /// **'Software development tutorials and resources'**
+  String get softwareDevelopmentTutorialsAndResources;
 
   /// No description provided for @spaceLasersComputersQuantumPhysicsEtc.
   ///
@@ -238,11 +460,29 @@ abstract class AppLocalizations {
   /// **'Space, lasers, computers, quantum physics, etc.'**
   String get spaceLasersComputersQuantumPhysicsEtc;
 
+  /// No description provided for @sports.
+  ///
+  /// In en, this message translates to:
+  /// **'Sports'**
+  String get sports;
+
   /// No description provided for @trippy.
   ///
   /// In en, this message translates to:
   /// **'Trippy'**
   String get trippy;
+
+  /// No description provided for @videoGameNewsReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Video game news, reviews'**
+  String get videoGameNewsReviews;
+
+  /// No description provided for @videoGames.
+  ///
+  /// In en, this message translates to:
+  /// **'Video Games'**
+  String get videoGames;
 
   /// No description provided for @videos.
   ///

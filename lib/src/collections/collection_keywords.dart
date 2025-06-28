@@ -77,105 +77,105 @@ class CollectionKeywords {
         id: 'trippy',
         description: l10n.groovyPsychedelicGoodness,
       ),
-      const NameIdDescription(
-        name: 'Religion',
+      NameIdDescription(
+        name: l10n.religion,
         id: 'religion',
-        description: 'Occult, New Age, Christianity, spiritual bookmarks',
+        description: l10n.occultNewAgeChristianitySpiritualBookmarks,
       ),
-      const NameIdDescription(
-        name: 'Right Wing News',
+      NameIdDescription(
+        name: l10n.rightWingNews,
         id: 'rw-mews',
-        description: 'Conservative propaganda',
+        description: l10n.conservativePropaganda,
       ),
-      const NameIdDescription(
-        name: 'Left Wing News',
+      NameIdDescription(
+        name: l10n.leftWingNews,
         id: 'lw-news',
-        description: 'Left wing propaganda',
+        description: l10n.leftWingPropaganda,
       ),
-      const NameIdDescription(
-        name: 'Interesting',
+      NameIdDescription(
+        name: l10n.interesting,
         id: 'interesting',
-        description: 'Interesting and fascinating facts',
+        description: l10n.interestingAndFascinatingFacts,
       ),
-      const NameIdDescription(
-        name: 'News',
+      NameIdDescription(
+        name: l10n.news,
         id: 'news',
-        description: 'Miscellaneous news',
+        description: l10n.miscellaneousNews,
       ),
-      const NameIdDescription(
-        name: 'Conspiracy',
+      NameIdDescription(
+        name: l10n.conspiracy,
         id: 'conspiracy',
-        description: 'Conspiracy theories and evidence',
+        description: l10n.conspiracyTheoriesAndEvidence,
       ),
-      const NameIdDescription(
-        name: 'Sports',
+      NameIdDescription(
+        name: l10n.sports,
         id: 'sports',
-        description: 'Football, baseball, boxing, MMA, skateboarding',
+        description: l10n.footballBaseballBoxingMmaSkateboarding,
       ),
-      const NameIdDescription(
-        name: 'NSFW',
+      NameIdDescription(
+        name: l10n.nsfw,
         id: 'nsfw',
-        description: 'Not Safe For Work',
+        description: l10n.notSafeForWork,
       ),
-      const NameIdDescription(
-        name: 'Entertainment',
+      NameIdDescription(
+        name: l10n.entertainment,
         id: 'entertainment',
-        description: 'Movies, TV shows, music, and more',
+        description: l10n.moviesTvShowsMusicAndMore,
       ),
-      const NameIdDescription(
-        name: 'Video Games',
+      NameIdDescription(
+        name: l10n.videoGames,
         id: 'video-games',
-        description: 'Video game news, reviews',
+        description: l10n.videoGameNewsReviews,
       ),
-      const NameIdDescription(
-        name: 'Software Development',
+      NameIdDescription(
+        name: l10n.softwareDevelopment,
         id: 'software-dev',
-        description: 'Software development tutorials and resources',
+        description: l10n.softwareDevelopmentTutorialsAndResources,
       ),
-      const NameIdDescription(
-        name: 'Hobbies',
+      NameIdDescription(
+        name: l10n.hobbies,
         id: 'hobbies',
-        description: 'Hobbies and leisure activities',
+        description: l10n.hobbiesAndLeisureActivities,
       ),
-      const NameIdDescription(
-        name: 'Music',
+      NameIdDescription(
+        name: l10n.music,
         id: 'music',
-        description: 'Music collections, playlists, and artists',
+        description: l10n.musicCollectionsPlaylistsAndArtists,
       ),
-      const NameIdDescription(
-        name: 'Literature',
+      NameIdDescription(
+        name: l10n.literature,
         id: 'literature',
-        description: 'Literary works, poetry, and essays',
+        description: l10n.literaryWorksPoetryAndEssays,
       ),
-      const NameIdDescription(
-        name: 'History',
+      NameIdDescription(
+        name: l10n.history,
         id: 'history',
-        description: 'Historical events, figures, and analysis',
+        description: l10n.historicalEventsFiguresAndAnalysis,
       ),
-      const NameIdDescription(
-        name: 'Gore',
+      NameIdDescription(
+        name: l10n.gore,
         id: 'gore',
-        description: 'Graphic content, violence, and disturbing imagery',
+        description: l10n.graphicContentViolenceAndDisturbingImagery,
       ),
-      const NameIdDescription(
-        name: 'Drugs',
+      NameIdDescription(
+        name: l10n.drugs,
         id: 'drugs',
-        description: 'Information for safe usage and education about drugs',
+        description: l10n.informationForSafeUsageAndEducationAboutDrugs,
       ),
-      const NameIdDescription(
-        name: 'Blogs',
+      NameIdDescription(
+        name: l10n.blogs,
         id: 'blogs',
-        description: 'Cool bloggers with interesting ideas',
+        description: l10n.coolBloggersWithInterestingIdeas,
       ),
-      const NameIdDescription(
-        name: 'Shopping',
+      NameIdDescription(
+        name: l10n.shopping,
         id: 'shopping',
-        description: 'Cool products, affiliate links, obscure finds',
+        description: l10n.coolProductsAffiliateLinksObscureFinds,
       ),
-      const NameIdDescription(
-        name: 'Celebrities',
+      NameIdDescription(
+        name: l10n.celebrities,
         id: 'celebrities',
-        description: 'Famous people doing cool stuff',
+        description: l10n.famousPeopleDoingCoolStuff,
       ),
     ];
   }
