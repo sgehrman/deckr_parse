@@ -94,17 +94,161 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[Locale('en')];
 
+  /// No description provided for @adult.
+  ///
+  /// In en, this message translates to:
+  /// **'Adult'**
+  String get adult;
+
+  /// No description provided for @adultBookmarks.
+  ///
+  /// In en, this message translates to:
+  /// **'Adult bookmarks'**
+  String get adultBookmarks;
+
+  /// No description provided for @artificialIntelligence.
+  ///
+  /// In en, this message translates to:
+  /// **'Artificial Intelligence'**
+  String get artificialIntelligence;
+
+  /// No description provided for @bestRedditChannelsAndPosts.
+  ///
+  /// In en, this message translates to:
+  /// **'Best Reddit channels and posts'**
+  String get bestRedditChannelsAndPosts;
+
+  /// No description provided for @coding.
+  ///
+  /// In en, this message translates to:
+  /// **'Coding'**
+  String get coding;
+
+  /// No description provided for @coolVideos.
+  ///
+  /// In en, this message translates to:
+  /// **'Cool videos'**
+  String get coolVideos;
+
+  /// No description provided for @documentaries.
+  ///
+  /// In en, this message translates to:
+  /// **'Documentaries'**
+  String get documentaries;
+
+  /// No description provided for @documentaryBookmarksAndResources.
+  ///
+  /// In en, this message translates to:
+  /// **'Documentary bookmarks and resources'**
+  String get documentaryBookmarksAndResources;
+
+  /// No description provided for @educational.
+  ///
+  /// In en, this message translates to:
+  /// **'Educational'**
+  String get educational;
+
+  /// No description provided for @featureLengthMoviesAndShortFilms.
+  ///
+  /// In en, this message translates to:
+  /// **'Feature length movies and short films'**
+  String get featureLengthMoviesAndShortFilms;
+
+  /// No description provided for @groovyPsychedelicGoodness.
+  ///
+  /// In en, this message translates to:
+  /// **'Groovy psychedelic goodness'**
+  String get groovyPsychedelicGoodness;
+
+  /// No description provided for @howTo.
+  ///
+  /// In en, this message translates to:
+  /// **'How-to'**
+  String get howTo;
+
   /// No description provided for @humor.
   ///
   /// In en, this message translates to:
   /// **'Humor'**
   String get humor;
 
+  /// No description provided for @instructionsHowToBookmarks.
+  ///
+  /// In en, this message translates to:
+  /// **'Instructions, how-to bookmarks'**
+  String get instructionsHowToBookmarks;
+
+  /// No description provided for @learningResourcesCollegeCoursesTutoring.
+  ///
+  /// In en, this message translates to:
+  /// **'Learning resources, college courses, tutoring'**
+  String get learningResourcesCollegeCoursesTutoring;
+
   /// No description provided for @memesComedyShowsSillyGoofyWebsites.
   ///
   /// In en, this message translates to:
   /// **'Memes, comedy shows, silly/goofy websites'**
   String get memesComedyShowsSillyGoofyWebsites;
+
+  /// No description provided for @movies.
+  ///
+  /// In en, this message translates to:
+  /// **'Movies'**
+  String get movies;
+
+  /// No description provided for @paranormal.
+  ///
+  /// In en, this message translates to:
+  /// **'Paranormal'**
+  String get paranormal;
+
+  /// No description provided for @paranormalWeirdStuffUfosGhosts.
+  ///
+  /// In en, this message translates to:
+  /// **'Paranormal, weird stuff, ufos, ghosts'**
+  String get paranormalWeirdStuffUfosGhosts;
+
+  /// No description provided for @philosophicArticlesBooksAndVideos.
+  ///
+  /// In en, this message translates to:
+  /// **'Philosophic articles, books and videos'**
+  String get philosophicArticlesBooksAndVideos;
+
+  /// No description provided for @philosophy.
+  ///
+  /// In en, this message translates to:
+  /// **'Philosophy'**
+  String get philosophy;
+
+  /// No description provided for @programmingTutorialsAndResources.
+  ///
+  /// In en, this message translates to:
+  /// **'Programming tutorials and resources'**
+  String get programmingTutorialsAndResources;
+
+  /// No description provided for @sciTech.
+  ///
+  /// In en, this message translates to:
+  /// **'Sci/Tech'**
+  String get sciTech;
+
+  /// No description provided for @spaceLasersComputersQuantumPhysicsEtc.
+  ///
+  /// In en, this message translates to:
+  /// **'Space, lasers, computers, quantum physics, etc.'**
+  String get spaceLasersComputersQuantumPhysicsEtc;
+
+  /// No description provided for @trippy.
+  ///
+  /// In en, this message translates to:
+  /// **'Trippy'**
+  String get trippy;
+
+  /// No description provided for @videos.
+  ///
+  /// In en, this message translates to:
+  /// **'Videos'**
+  String get videos;
 }
 
 class _AppLocalizationsDelegate

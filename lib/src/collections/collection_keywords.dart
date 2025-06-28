@@ -12,70 +12,70 @@ class CollectionKeywords {
         id: 'humor',
         description: l10n.memesComedyShowsSillyGoofyWebsites,
       ),
-      const NameIdDescription(
-        name: 'Educational',
+      NameIdDescription(
+        name: l10n.educational,
         id: 'educational',
-        description: 'Philosphy, college courses, tutoring',
+        description: l10n.learningResourcesCollegeCoursesTutoring,
       ),
-      const NameIdDescription(
+      NameIdDescription(
         name: 'AI',
         id: 'ai',
-        description: 'Artificial Intelligence',
+        description: l10n.artificialIntelligence,
       ),
-      const NameIdDescription(
-        name: 'Adult',
+      NameIdDescription(
+        name: l10n.adult,
         id: 'adult',
-        description: 'Adult bookmarks',
+        description: l10n.adultBookmarks,
       ),
-      const NameIdDescription(
+      NameIdDescription(
         name: 'Reddit',
         id: 'reddit',
-        description: 'Best Reddit channels and posts',
+        description: l10n.bestRedditChannelsAndPosts,
       ),
-      const NameIdDescription(
-        name: 'Philosophy',
+      NameIdDescription(
+        name: l10n.philosophy,
         id: 'philosophy',
-        description: 'Philosophic articles, books and videos',
+        description: l10n.philosophicArticlesBooksAndVideos,
       ),
-      const NameIdDescription(
-        name: 'Videos',
+      NameIdDescription(
+        name: l10n.videos,
         id: 'videos',
-        description: 'Cool videos',
+        description: l10n.coolVideos,
       ),
-      const NameIdDescription(
-        name: 'Paranormal',
+      NameIdDescription(
+        name: l10n.paranormal,
         id: 'paranormal',
-        description: 'Paranormal, weird stuff, ufos, ghosts',
+        description: l10n.paranormalWeirdStuffUfosGhosts,
       ),
-      const NameIdDescription(
-        name: 'How to',
+      NameIdDescription(
+        name: l10n.howTo,
         id: 'how-to',
-        description: 'Instructions, how-to bookmarks',
+        description: l10n.instructionsHowToBookmarks,
       ),
-      const NameIdDescription(
-        name: 'Coding',
+      NameIdDescription(
+        name: l10n.coding,
         id: 'coding',
-        description: 'Programming tutorials and resources',
+        description: l10n.programmingTutorialsAndResources,
       ),
-      const NameIdDescription(
-        name: 'Movies',
+      NameIdDescription(
+        name: l10n.movies,
         id: 'movies',
-        description: 'Feature length movies and short films',
+        description: l10n.featureLengthMoviesAndShortFilms,
       ),
-      const NameIdDescription(
-        name: 'Documentaries',
+      NameIdDescription(
+        name: l10n.documentaries,
         id: 'documentaries',
-        description: 'Documentary bookmarks and resources',
+        description: l10n.documentaryBookmarksAndResources,
       ),
-      const NameIdDescription(
-        name: 'Sci/Tech',
+      NameIdDescription(
+        name: l10n.sciTech,
         id: 'sci-tech',
-        description: 'Space, lasers, computers, quantum physics, etc.',
+        description: l10n.spaceLasersComputersQuantumPhysicsEtc,
       ),
-      const NameIdDescription(
-        name: 'Trippy',
+      NameIdDescription(
+        name: l10n.trippy,
         id: 'trippy',
-        description: 'Groovy psychedelic goodness',
+        description: l10n.groovyPsychedelicGoodness,
       ),
       const NameIdDescription(
         name: 'Religion',
