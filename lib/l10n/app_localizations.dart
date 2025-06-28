@@ -93,6 +93,18 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[Locale('en')];
+
+  /// No description provided for @humor.
+  ///
+  /// In en, this message translates to:
+  /// **'Humor'**
+  String get humor;
+
+  /// No description provided for @memesComedyShowsSillyGoofyWebsites.
+  ///
+  /// In en, this message translates to:
+  /// **'Memes, comedy shows, silly/goofy websites'**
+  String get memesComedyShowsSillyGoofyWebsites;
 }
 
 class _AppLocalizationsDelegate

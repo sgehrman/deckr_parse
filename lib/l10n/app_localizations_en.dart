@@ -7,4 +7,11 @@ import 'app_localizations.dart';
 /// The translations for English (`en`).
 class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
+
+  @override
+  String get humor => 'Humor';
+
+  @override
+  String get memesComedyShowsSillyGoofyWebsites =>
+      'Memes, comedy shows, silly/goofy websites';
 }

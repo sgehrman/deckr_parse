@@ -1,15 +1,16 @@
+import 'package:deckr_parse/l10n/app_localizations.dart';
 import 'package:dfc_flutter/dfc_flutter_web.dart';
 import 'package:flutter/widgets.dart';
 
 class CollectionKeywords {
   List<NameIdDescription> keywords(BuildContext context) {
-    // final l10n = AppLocalizations.of(context);
+    final l10n = AppLocalizations.of(context);
 
     return [
-      const NameIdDescription(
-        name: 'Humor',
+      NameIdDescription(
+        name: l10n.humor,
         id: 'humor',
-        description: 'Memes, comedy shows, silly/goofy websites',
+        description: l10n.memesComedyShowsSillyGoofyWebsites,
       ),
       const NameIdDescription(
         name: 'Educational',
@@ -24,17 +25,17 @@ class CollectionKeywords {
       const NameIdDescription(
         name: 'Adult',
         id: 'adult',
-        description: 'Adult bookmark decks',
+        description: 'Adult bookmarks',
       ),
       const NameIdDescription(
         name: 'Reddit',
         id: 'reddit',
-        description: 'Best Reddit channel collections',
+        description: 'Best Reddit channels and posts',
       ),
       const NameIdDescription(
         name: 'Philosophy',
         id: 'philosophy',
-        description: 'Philosophic articles/video collections',
+        description: 'Philosophic articles, books and videos',
       ),
       const NameIdDescription(
         name: 'Videos',
@@ -49,22 +50,22 @@ class CollectionKeywords {
       const NameIdDescription(
         name: 'How to',
         id: 'how-to',
-        description: 'Instructions, how to bookmark decks',
+        description: 'Instructions, how-to bookmarks',
       ),
       const NameIdDescription(
         name: 'Coding',
         id: 'coding',
-        description: 'How to code. Dart/Flutter focused',
+        description: 'Programming tutorials and resources',
       ),
       const NameIdDescription(
         name: 'Movies',
         id: 'movies',
-        description: 'Feature length movie bookmarks',
+        description: 'Feature length movies and short films',
       ),
       const NameIdDescription(
         name: 'Documentaries',
         id: 'documentaries',
-        description: 'Documentary bookmark decks',
+        description: 'Documentary bookmarks and resources',
       ),
       const NameIdDescription(
         name: 'Sci/Tech',
@@ -79,7 +80,7 @@ class CollectionKeywords {
       const NameIdDescription(
         name: 'Religion',
         id: 'religion',
-        description: 'Occult, New Age, Christianity, Spiritual bookmarks',
+        description: 'Occult, New Age, Christianity, spiritual bookmarks',
       ),
       const NameIdDescription(
         name: 'Right Wing News',
@@ -99,7 +100,7 @@ class CollectionKeywords {
       const NameIdDescription(
         name: 'News',
         id: 'news',
-        description: 'Miscellaneous news (hopefully unbiased)',
+        description: 'Miscellaneous news',
       ),
       const NameIdDescription(
         name: 'Conspiracy',
@@ -129,7 +130,7 @@ class CollectionKeywords {
       const NameIdDescription(
         name: 'Software Development',
         id: 'software-dev',
-        description: 'Software development resources',
+        description: 'Software development tutorials and resources',
       ),
       const NameIdDescription(
         name: 'Hobbies',
