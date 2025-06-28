@@ -3,7 +3,9 @@ import 'package:dfc_flutter/dfc_flutter_web.dart';
 import 'package:flutter/widgets.dart';
 
 class CollectionKeywords {
-  List<NameIdDescription> keywords(BuildContext context) {
+  CollectionKeywords._();
+
+  static List<NameIdDescription> keywords(BuildContext context) {
     final l10n = AppLocalizations.of(context);
 
     return [
