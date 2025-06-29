@@ -5,6 +5,7 @@ export 'src/bulletins_query_list.dart';
 export 'src/collections/collection_counts.dart';
 export 'src/collections/collection_keywords.dart';
 export 'src/collections/collection_rating_cache.dart';
+export 'src/collections/collection_rating_provider.dart';
 export 'src/collections/collection_rating_utils.dart';
 export 'src/collections/collection_utils.dart';
 export 'src/collections/collections_query_list.dart';
