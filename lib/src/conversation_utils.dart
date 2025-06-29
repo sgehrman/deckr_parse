@@ -85,6 +85,8 @@ class ConversationUtils {
           result.add(b);
         }
       }
+    } else {
+      print('Error while querying $className: ${response.error}');
     }
 
     return result;

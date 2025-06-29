@@ -77,6 +77,8 @@ class BackupUtils {
 
       if (apiResponse.success && apiResponse.results != null) {
         return apiResponse.results! as List<ParseObject>;
+      } else {
+        print('Error while querying backups: ${apiResponse.error}');
       }
     }
 

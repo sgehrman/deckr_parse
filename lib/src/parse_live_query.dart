@@ -95,6 +95,8 @@ class ParseLiveQuery<T> {
 
     if (apiResponse.success && apiResponse.results != null) {
       parseObjects = apiResponse.results! as List<ParseObject>;
+    } else {
+      print('Error while querying ParseLiveQuery: ${apiResponse.error}');
     }
 
     _objects.clear();

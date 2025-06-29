@@ -274,6 +274,8 @@ class CollectionUtils {
           result.add(b);
         }
       }
+    } else {
+      print('Error while querying $kClassName: ${response.error}');
     }
 
     return result;
