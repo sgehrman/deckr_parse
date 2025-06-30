@@ -356,7 +356,7 @@ class ParseUtils {
         if (contextInfo.isNotEmpty) {
           print(contextInfo);
         }
-        print('Parse Error: ${response.error?.message ?? response}');
+        print('Parse Error: ${response.error ?? response}');
       }
     }
   }
