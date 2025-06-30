@@ -35,7 +35,7 @@ class CollectionCounts {
       final map = <String, int>{};
 
       final futures = <Future<void>>[];
-      for (final item in CollectionKeywords.keywords(context)) {
+      for (final item in CollectionKeywords().keywords(context)) {
         futures.add(_countFuture(map, item.id));
       }
 
