@@ -29,6 +29,13 @@ class CollectionKeywords {
     return map[id]?.name ?? id;
   }
 
+  List<String> namesForIds({
+    required BuildContext context,
+    required List<String> ids,
+  }) {
+    return ids.map((id) => nameForId(context: context, id: id)).toList();
+  }
+
   List<NameIdDescription> keywords(BuildContext context) {
     if (_listCache.isEmpty) {
       final l10n = AppLocalizations.of(context);
