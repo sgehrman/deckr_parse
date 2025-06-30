@@ -18,7 +18,10 @@ class ConversationUtils {
     if (response.success) {
       // print('$className created ${parseObject.objectId}');
     } else {
-      print('Error while creating $className: ${response.error}');
+      ParseUtils.printParseError(
+        response,
+        contextInfo: 'Error while creating $className',
+      );
     }
 
     return response.success;
@@ -36,7 +39,10 @@ class ConversationUtils {
     if (response.success) {
       // print('$className created ${parseObject.objectId}');
     } else {
-      print('Error while creating $className: ${response.error}');
+      ParseUtils.printParseError(
+        response,
+        contextInfo: 'Error in setMarkedAsRead $className',
+      );
     }
 
     return response.success;

@@ -1,4 +1,5 @@
 import 'package:deckr_parse/src/models/indexed_bookmark_model.dart';
+import 'package:deckr_parse/src/parse_utils.dart';
 import 'package:dfc_flutter/dfc_flutter_web.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
@@ -42,7 +43,10 @@ class BookmarkImageUploader {
           if (response.success) {
             return parseFile;
           } else {
-            print('BookmarkImageUploader _upload failed: ${response.error}');
+            ParseUtils.printParseError(
+              response,
+              contextInfo: 'BookmarkImageUploader _upload failed',
+            );
           }
         }
       }

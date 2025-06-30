@@ -71,7 +71,10 @@ class CollectionUtils {
             return pobj.toJson();
           }
         } else {
-          print('Error while creating Collection: ${response.success}');
+          ParseUtils.printParseError(
+            response,
+            contextInfo: 'Error while creating Collection',
+          );
         }
       } else {
         print('Error while creating bookmarkList: ${listResponse.success}');
@@ -144,6 +147,11 @@ class CollectionUtils {
               images = Map<String, ParseFileBase>.from(map);
             }
           }
+        } else {
+          ParseUtils.printParseError(
+            response,
+            contextInfo: 'Error in bookmarksForCollection',
+          );
         }
       }
     } else {
@@ -341,7 +349,10 @@ class CollectionUtils {
       if (response.success) {
         return response.count;
       } else {
-        print('${response.error}');
+        ParseUtils.printParseError(
+          response,
+          contextInfo: 'Error in collectionCount',
+        );
       }
     }
 

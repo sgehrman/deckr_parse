@@ -38,7 +38,10 @@ class CollectionRatingUtils {
     if (response.success) {
       // print('$className created ${parseObject.objectId}');
     } else {
-      print('Error while creating $className: ${response.error}');
+      ParseUtils.printParseError(
+        response,
+        contextInfo: 'Error while uploading $className',
+      );
     }
 
     return response.success;

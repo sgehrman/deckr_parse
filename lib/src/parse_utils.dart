@@ -66,6 +66,8 @@ class ParseUtils {
         message: response.error!.message,
         error: true,
       );
+
+      ParseUtils.printParseError(response, contextInfo: 'resetPassword failed');
     }
 
     return response.success;
@@ -91,6 +93,8 @@ class ParseUtils {
         message: response.error!.message,
         error: true,
       );
+
+      ParseUtils.printParseError(response, contextInfo: 'createUser failed');
     }
 
     return response.success;
@@ -117,6 +121,8 @@ class ParseUtils {
         message: response.error!.message,
         error: true,
       );
+
+      ParseUtils.printParseError(response, contextInfo: 'signIn failed');
     }
 
     return response.success;
@@ -141,6 +147,8 @@ class ParseUtils {
         message: response.error!.message,
         error: true,
       );
+
+      ParseUtils.printParseError(response, contextInfo: 'signOut failed');
     }
 
     return response.success;
@@ -171,7 +179,7 @@ class ParseUtils {
     if (response.success) {
       return parseFile;
     } else {
-      print('save image failed: ${response.error}');
+      ParseUtils.printParseError(response, contextInfo: 'save image failed');
     }
 
     return null;
@@ -339,7 +347,7 @@ class ParseUtils {
 
   static void printParseError(
     ParseResponse response, {
-    String contextInfo = '',
+    required String contextInfo,
   }) {
     if (response.success) {
       // this can be called if results == null

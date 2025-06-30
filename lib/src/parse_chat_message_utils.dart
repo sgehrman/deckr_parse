@@ -39,6 +39,11 @@ class ParseChatMessageUtils {
         message: 'Error while creating $className: ${response.error}',
         error: true,
       );
+
+      ParseUtils.printParseError(
+        response,
+        contextInfo: 'Error while uploading $className',
+      );
     }
 
     // make sure there is a ChatConversation for this chat

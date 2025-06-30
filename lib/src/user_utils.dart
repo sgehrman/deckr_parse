@@ -26,7 +26,10 @@ class UserUtils {
       if (response.success) {
         await ParseUserProvider().sync();
       } else {
-        print('Error while updating License key: ${response.error}');
+        ParseUtils.printParseError(
+          response,
+          contextInfo: 'Error while updating License key',
+        );
       }
     }
 
@@ -48,7 +51,10 @@ class UserUtils {
       if (response.success) {
         await ParseUserProvider().sync();
       } else {
-        print('Error while updating blueCheck: ${response.error}');
+        ParseUtils.printParseError(
+          response,
+          contextInfo: 'Error while updating blueCheck',
+        );
       }
     }
 
@@ -77,7 +83,10 @@ class UserUtils {
           error: true,
         );
 
-        print('Error while updating User: ${response.error}');
+        ParseUtils.printParseError(
+          response,
+          contextInfo: 'Error while updating User',
+        );
       }
 
       return response.success;

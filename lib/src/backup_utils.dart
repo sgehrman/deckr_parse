@@ -26,9 +26,12 @@ class BackupUtils {
 
       final response = await parseObject.save();
       if (response.success) {
-        print('Backup created ${parseObject.objectId}');
+        // print('Backup created ${parseObject.objectId}');
       } else {
-        print('Error while creating Backup: ${response.error}');
+        ParseUtils.printParseError(
+          response,
+          contextInfo: 'Error while creating $className',
+        );
       }
 
       return true;
@@ -78,7 +81,10 @@ class BackupUtils {
       if (apiResponse.success && apiResponse.results != null) {
         return apiResponse.results! as List<ParseObject>;
       } else {
-        print('Error while querying backups: ${apiResponse.error}');
+        ParseUtils.printParseError(
+          apiResponse,
+          contextInfo: 'Error while creating $className',
+        );
       }
     }
 

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:deckr_parse/src/parse_utils.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class ParseLiveQuery<T> {
@@ -96,7 +97,10 @@ class ParseLiveQuery<T> {
     if (apiResponse.success && apiResponse.results != null) {
       parseObjects = apiResponse.results! as List<ParseObject>;
     } else {
-      print('Error while querying ParseLiveQuery: ${apiResponse.error}');
+      ParseUtils.printParseError(
+        apiResponse,
+        contextInfo: 'Error while querying ParseLiveQuery',
+      );
     }
 
     _objects.clear();
