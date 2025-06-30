@@ -342,10 +342,13 @@ class ParseUtils {
     String contextInfo = '',
   }) {
     if (response.success) {
-      if (contextInfo.isNotEmpty) {
-        print(contextInfo);
+      // this can be called if results == null
+      if (response.results != null) {
+        if (contextInfo.isNotEmpty) {
+          print(contextInfo);
+        }
+        print('Parse Response Success but results not null?: $response');
       }
-      print('Parse Response Success but result null?: $response');
     } else {
       final code = response.error?.code ?? 0;
 
