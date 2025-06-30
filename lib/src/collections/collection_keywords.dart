@@ -23,6 +23,12 @@ class CollectionKeywords {
     return _mapCache;
   }
 
+  String nameForId({required BuildContext context, required String id}) {
+    final map = keywordsMap(context);
+
+    return map[id]?.name ?? id;
+  }
+
   List<NameIdDescription> keywords(BuildContext context) {
     if (_listCache.isEmpty) {
       final l10n = AppLocalizations.of(context);
