@@ -275,7 +275,10 @@ class CollectionUtils {
         }
       }
     } else {
-      print('Error while querying $kClassName: ${response.error}');
+      ParseUtils.printParseError(
+        response,
+        contextInfo: 'Error while querying $kClassName',
+      );
     }
 
     return result;
@@ -294,7 +297,10 @@ class CollectionUtils {
       if (response.success && response.result != null) {
         return parseObjectToModel(response.result as ParseObject);
       } else {
-        print('collectionWithId: Object not found.');
+        ParseUtils.printParseError(
+          response,
+          contextInfo: 'collectionWithId: Object not found',
+        );
       }
     } catch (e) {
       print('Error collectionWithId: $e');

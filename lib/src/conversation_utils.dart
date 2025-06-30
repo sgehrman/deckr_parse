@@ -86,7 +86,10 @@ class ConversationUtils {
         }
       }
     } else {
-      print('Error while querying $className: ${response.error}');
+      ParseUtils.printParseError(
+        response,
+        contextInfo: 'Error while querying $className',
+      );
     }
 
     return result;

@@ -27,6 +27,8 @@ abstract class ParseHost {
 // ===========================================================
 
 class ParseUtils {
+  ParseUtils._();
+
   static late ParseHost _parseHost;
   static ParseHost get parseHost => _parseHost;
 
@@ -333,5 +335,29 @@ class ParseUtils {
     }
 
     return result;
+  }
+
+  static void printParseError(
+    ParseResponse response, {
+    String contextInfo = '',
+  }) {
+    if (response.success) {
+      if (contextInfo.isNotEmpty) {
+        print(contextInfo);
+      }
+      print('Parse Response Success but result null?: $response');
+    } else {
+      final code = response.error?.code ?? 0;
+
+      // Don't log Code: 1
+      // Message: Successful request, but no results found
+
+      if (code != 1) {
+        if (contextInfo.isNotEmpty) {
+          print(contextInfo);
+        }
+        print('Parse Error: ${response.error?.message ?? response}');
+      }
+    }
   }
 }
