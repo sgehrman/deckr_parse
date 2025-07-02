@@ -105,13 +105,9 @@ class CollectionRatingUtils {
       collectionId: collectionId,
     );
 
-    // should only be one
+    // should only be one if userId is set, otherwise it could be more
     if (ratings.isNotEmpty) {
-      if (ratings.length == 1) {
-        result = ratings.first;
-      } else {
-        print('Error: more than one rating');
-      }
+      result = ratings.first;
     }
 
     return result;
