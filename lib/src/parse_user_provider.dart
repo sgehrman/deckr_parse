@@ -32,9 +32,18 @@ class ParseUserProvider extends ChangeNotifier {
         _user!.sessionToken ?? '',
       );
 
+      print(response);
+      print(response?.error ?? 'Unknown error');
+      print(response?.statusCode ?? 'Unknown status code');
+      print(response?.success ?? 'Unknown success status');
+
       if (response == null || !response.success) {
         // Invalid session. Logout, this should call sync again and clear the _user
-        await ParseUtils.signOut();
+        // don't sign out if network error
+
+        print('will sign out');
+
+        // await ParseUtils.signOut();
       } else {
         ParseUtils.parseHost.onChange();
       }
