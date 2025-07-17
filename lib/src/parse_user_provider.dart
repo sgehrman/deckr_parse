@@ -19,6 +19,8 @@ class ParseUserProvider extends ChangeNotifier {
   ParseUserModel? _userModel;
 
   Future<void> sync() async {
+    print('--------START---------');
+
     _isAdmin = false;
     _user = await ParseUtils.getUser();
 
@@ -32,10 +34,11 @@ class ParseUserProvider extends ChangeNotifier {
         _user!.sessionToken ?? '',
       );
 
-      print(response);
-      print(response?.error ?? 'Unknown error');
-      print(response?.statusCode ?? 'Unknown status code');
-      print(response?.success ?? 'Unknown success status');
+      print('-----------------');
+      print('response: $response');
+      print('error: ${response?.error ?? 'Unknown error'}');
+      print('statusCode: ${response?.statusCode ?? 'Unknown status code'}');
+      print('success: ${response?.success ?? 'Unknown success status'}');
 
       if (response == null || !response.success) {
         // Invalid session. Logout, this should call sync again and clear the _user
@@ -48,6 +51,8 @@ class ParseUserProvider extends ChangeNotifier {
         ParseUtils.parseHost.onChange();
       }
     }
+
+    print('----ENDDDD-------------');
 
     notifyListeners();
   }
