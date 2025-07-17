@@ -19,8 +19,6 @@ class ParseUserProvider extends ChangeNotifier {
   ParseUserModel? _userModel;
 
   Future<void> sync() async {
-    print('--------START---------');
-
     _isAdmin = false;
     _user = await ParseUtils.getUser();
 
@@ -34,25 +32,29 @@ class ParseUserProvider extends ChangeNotifier {
         _user!.sessionToken ?? '',
       );
 
-      print('-----------------');
-      print('response: $response');
-      print('error: ${response?.error ?? 'Unknown error'}');
-      print('statusCode: ${response?.statusCode ?? 'Unknown status code'}');
-      print('success: ${response?.success ?? 'Unknown success status'}');
+      if (response != null) {
+        if (!response.success) {
+          // Invalid session. Logout, this should call sync again and clear the _user
+          // don't sign out if network error
 
-      if (response == null || !response.success) {
-        // Invalid session. Logout, this should call sync again and clear the _user
-        // don't sign out if network error
-
-        print('will sign out');
-
-        // await ParseUtils.signOut();
-      } else {
-        ParseUtils.parseHost.onChange();
+          // we use to signOut here, but this gets called if their wifi is down
+          // saw otherCause when wifi was down, not sure if this is the best way to handle it
+          // but test and see if this works, or just remove the signOut?
+          if (response.error != null &&
+              response.error?.code != ParseError.otherCause &&
+              response.error?.code != ParseError.connectionFailed &&
+              response.error?.code != ParseError.internalServerError &&
+              response.error?.code != ParseError.timeout) {
+            print('Signing out user due to error: ${response.error}');
+            await ParseUtils.signOut();
+          } else {
+            print('User not signed out: ${response.error}');
+          }
+        } else {
+          ParseUtils.parseHost.onChange();
+        }
       }
     }
-
-    print('----ENDDDD-------------');
 
     notifyListeners();
   }
